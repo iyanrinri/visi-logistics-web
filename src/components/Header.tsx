@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
+  const { t } = useLanguage();
+  
   return (
     <header className="header">
       <div className="container header-container">
@@ -22,15 +26,16 @@ export default function Header() {
         
         <nav className="nav">
           <ul className="nav-list">
-            <li><Link href="/" className="nav-link">Home</Link></li>
-            <li><Link href="/about" className="nav-link">About Us</Link></li>
-            <li><Link href="/services" className="nav-link">Services</Link></li>
-            <li><Link href="/contact" className="nav-link">Contact</Link></li>
+            <li><Link href="/" className="nav-link">{t('navigation.home')}</Link></li>
+            <li><Link href="/about" className="nav-link">{t('navigation.about')}</Link></li>
+            <li><Link href="/services" className="nav-link">{t('navigation.services')}</Link></li>
+            <li><Link href="/contact" className="nav-link">{t('navigation.contact')}</Link></li>
           </ul>
         </nav>
 
         <div className="header-actions">
-          <Link href="/contact" className="btn btn-primary">Get a Quote</Link>
+          <LanguageSwitcher />
+          <Link href="/contact" className="btn btn-primary">{t('common.getQuote')}</Link>
         </div>
       </div>
 
@@ -89,6 +94,12 @@ export default function Header() {
 
         .nav-link:hover::after {
           width: 100%;
+        }
+
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
         }
 
         @media (max-width: 768px) {

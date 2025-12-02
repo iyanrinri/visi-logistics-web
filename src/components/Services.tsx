@@ -1,54 +1,39 @@
 import { Warehouse, Plane, Ship, Truck, MapPin } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Services() {
+  const { t } = useLanguage();
+  
   const services = [
     {
-      title: "Charter Unit",
-      description: "Reliable and versatile fleet options tailored for every cargo size and delivery requirement.",
+      title: t('services.charterUnit.title'),
+      description: t('services.charterUnit.description'),
       icon: <Truck size={48} strokeWidth={1.5} />,
-      subServices: [
-        "Fuso", "Tronton", "Wing Box", 
-        "Pick Up Box / Blind Van", 
-        "CDE (Colt Diesel Engkel)", 
-        "CDD (Colt Diesel Double)", 
-        "Charter Car Carrier", 
-        "Charter Motorcycle Carrier"
-      ]
+      subServices: t('services.charterUnit.subServices') as string[]
     },
     {
-      title: "Sea Freight",
-      description: "Cost-effective and efficient ocean transport solutions for global and domestic connectivity.",
+      title: t('services.seaFreight.title'),
+      description: t('services.seaFreight.description'),
       icon: <Ship size={48} strokeWidth={1.5} />,
-      subServices: [
-        "LCL (Less Container Load)", 
-        "FCL (Full Container Load)", 
-        "International & Domestic service"
-      ]
+      subServices: t('services.seaFreight.subServices') as string[]
     },
     {
-      title: "Land Transport",
-      description: "Seamless ground transportation network ensuring timely delivery across the region.",
+      title: t('services.landTransport.title'),
+      description: t('services.landTransport.description'),
       icon: <MapPin size={48} strokeWidth={1.5} />,
-      subServices: [
-        "LTL (Less Than TruckLoad)", 
-        "FTL (Full Truck Load)"
-      ]
+      subServices: t('services.landTransport.subServices') as string[]
     },
     {
-      title: "Warehouse Management",
-      description: "State-of-the-art storage and inventory solutions to optimize your supply chain.",
+      title: t('services.warehouseManagement.title'),
+      description: t('services.warehouseManagement.description'),
       icon: <Warehouse size={48} strokeWidth={1.5} />,
-      subServices: [
-        "Warehousing Services"
-      ]
+      subServices: t('services.warehouseManagement.subServices') as string[]
     },
     {
-      title: "Air Freight",
-      description: "Rapid air cargo services for your most time-sensitive international and domestic shipments.",
+      title: t('services.airFreight.title'),
+      description: t('services.airFreight.description'),
       icon: <Plane size={48} strokeWidth={1.5} />,
-      subServices: [
-        "International & Domestic service"
-      ]
+      subServices: t('services.airFreight.subServices') as string[]
     }
   ];
 

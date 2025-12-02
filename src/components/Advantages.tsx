@@ -1,44 +1,46 @@
 import React from 'react';
 import { Award, TrendingUp, ShieldCheck, Users } from 'lucide-react';
-
-const advantages = [
-  {
-    id: '01',
-    title: 'Best Service',
-    description: 'Our mission is to attract and retain customers by providing Best in Class transportation solutions and fostering a profitable, disciplined culture service.',
-    icon: <Award size={40} strokeWidth={1.5} />,
-  },
-  {
-    id: '02',
-    title: 'Reputation',
-    description: 'We have established a strong presence in the transportation industry. Our award-winning services earn a reputation for quality and excellence that few can rival.',
-    icon: <TrendingUp size={40} strokeWidth={1.5} />,
-  },
-  {
-    id: '03',
-    title: 'Safety & Security',
-    description: 'Safety for our employees, customers and community we work in will always remain our primary focus in all the policies, procedures and programs that govern our business.',
-    icon: <ShieldCheck size={40} strokeWidth={1.5} />,
-  },
-  {
-    id: '04',
-    title: 'Qualified Employees',
-    description: 'Our team is comprised of some of the best qualified managers and drivers in the industry. We can match your transportation needs and preferences of cargo delivery.',
-    icon: <Users size={40} strokeWidth={1.5} />,
-  },
-];
+import { useLanguage } from '@/lib/LanguageContext';
 
 const Advantages = () => {
+  const { t } = useLanguage();
+  
+  const advantages = [
+    {
+      id: '01',
+      title: t('advantages.fastDelivery.title'),
+      description: t('advantages.fastDelivery.description'),
+      icon: <Award size={40} strokeWidth={1.5} />,
+    },
+    {
+      id: '02',
+      title: t('advantages.realTimeTracking.title'),
+      description: t('advantages.realTimeTracking.description'),
+      icon: <TrendingUp size={40} strokeWidth={1.5} />,
+    },
+    {
+      id: '03',
+      title: t('advantages.securePackaging.title'),
+      description: t('advantages.securePackaging.description'),
+      icon: <ShieldCheck size={40} strokeWidth={1.5} />,
+    },
+    {
+      id: '04',
+      title: t('advantages.customerSupport.title'),
+      description: t('advantages.customerSupport.description'),
+      icon: <Users size={40} strokeWidth={1.5} />,
+    },
+  ];
   return (
     <section className="advantages-section">
       <div className="container">
         <div className="header">
           <div className="title-wrapper">
             <span className="line"></span>
-            <h2 className="section-title">Our Advantages</h2>
+            <h2 className="section-title">{t('advantages.title')}</h2>
             <span className="line"></span>
           </div>
-          <h3 className="main-heading">Possibility In Every Direction</h3>
+          <h3 className="main-heading">{t('advantages.subtitle')}</h3>
         </div>
         
         <div className="grid">

@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, ArrowRight, Package } from 'lucide-react';
-
-const SLIDES = [
-  {
-    title: "Possibility In Every Direction",
-    subtitle: "A PARTNERSHIP BASED ON TRUST",
-    feature: "SAFETY & SECURITY",
-    description: "We partner with transportation and delivery companies worldwide.",
-    image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-  },
-  {
-    title: "Possibility In Every Direction",
-    subtitle: "COMFORTABLE PAYMENT SYSTEM",
-    feature: "BEST SERVICE",
-    description: "You can pay for our services using any modern method of payment",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-  }
-];
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Hero() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [trackingId, setTrackingId] = useState('');
+
+  const SLIDES = [
+    {
+      title: t('hero.title'),
+      subtitle: t('hero.subtitle'),
+      description: t('hero.description'),
+      image: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+    },
+    {
+      title: t('hero.title'),
+      subtitle: t('hero.subtitle'),
+      description: t('hero.description'),
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+    }
+  ];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -53,12 +53,16 @@ export default function Hero() {
           <div className="slide-content">
             <span className="hero-subtitle-text fade-in">{SLIDES[currentSlide].subtitle}</span>
             <h1 className="hero-title fade-in-up">
-              {SLIDES[currentSlide].title} <br />
-              <span className="text-highlight">{SLIDES[currentSlide].feature}</span>
+              {SLIDES[currentSlide].title}
             </h1>
             <p className="hero-description fade-in-up-delay">
               {SLIDES[currentSlide].description}
             </p>
+            <div className="hero-actions fade-in-up-delay-2">
+              <button className="btn btn-secondary">
+                {t('hero.getStarted')}
+              </button>
+            </div>
           </div>
           
           <div className="tracking-box glass fade-in-up-delay-2">
@@ -66,24 +70,24 @@ export default function Hero() {
               <div className="tracking-icon">
                 <Package size={24} />
               </div>
-              <h3>Track Your Shipment</h3>
+              <h3>{t('navigation.track')}</h3>
             </div>
             <form onSubmit={handleTrackSubmit} className="tracking-form-wrapper">
               <div className="input-group">
                 <Search className="search-icon" size={20} />
                 <input 
                   type="text" 
-                  placeholder="Enter your tracking ID..." 
+                  placeholder={t('navigation.track') + ' ID...'} 
                   value={trackingId}
                   onChange={(e) => setTrackingId(e.target.value)}
                 />
               </div>
               <button type="submit" className="btn-track">
-                <span>Track</span>
+                <span>{t('hero.trackPackage')}</span>
                 <ArrowRight size={18} />
               </button>
             </form>
-            <p className="tracking-help">Need help? <a href="/contact">Contact Support</a></p>
+            <p className="tracking-help">Need help? <a href="/contact">{t('common.contactUs')}</a></p>
           </div>
         </div>
       </div>
@@ -94,8 +98,9 @@ export default function Hero() {
           min-height: 100vh;
           display: flex;
           align-items: center;
-          padding-top: 80px;
+          padding-top: 40px;
           overflow: hidden;
+          padding-bottom: 40px;
         }
 
         .hero-bg {
@@ -170,6 +175,13 @@ export default function Hero() {
           opacity: 0.9;
           line-height: 1.6;
           max-width: 600px;
+          margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
         }
 
         /* Animations */

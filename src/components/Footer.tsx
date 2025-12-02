@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+  
   return (
     <footer className="footer" id="contact">
       <div className="container">
@@ -16,34 +19,34 @@ export default function Footer() {
               />
             </div>
             <p className="footer-desc">
-              Visi Logistics under the management of PT. Surya Mandiri Logistik as a company that has experience in the business of express shipping and logistics service, since of 2011.
+              {t('footer.companyDescription')}
             </p>
-            <p className="copyright">© {new Date().getFullYear()} Visi Logistics. All rights reserved.</p>
+            <p className="copyright">© {new Date().getFullYear()} Visi Logistics. {t('footer.allRightsReserved')}</p>
           </div>
           
           <div className="footer-links">
-            <h4>Quick Links</h4>
+            <h4>{t('footer.quickLinks')}</h4>
             <ul>
-              <li><a href="#home">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="#track">Track Shipment</a></li>
+              <li><a href="#home">{t('navigation.home')}</a></li>
+              <li><a href="/about">{t('navigation.about')}</a></li>
+              <li><a href="/services">{t('navigation.services')}</a></li>
+              <li><a href="#track">{t('navigation.track')}</a></li>
             </ul>
           </div>
 
           <div className="footer-links">
-            <h4>Our Services</h4>
+            <h4>{t('footer.services')}</h4>
             <ul>
-              <li><a href="/services">Charter Unit</a></li>
-              <li><a href="/services">Sea Freight</a></li>
-              <li><a href="/services">Land Transport</a></li>
-              <li><a href="/services">Warehouse Management</a></li>
-              <li><a href="/services">Air Freight</a></li>
+              <li><a href="/services">{t('services.charterUnit.title')}</a></li>
+              <li><a href="/services">{t('services.seaFreight.title')}</a></li>
+              <li><a href="/services">{t('services.landTransport.title')}</a></li>
+              <li><a href="/services">{t('services.warehouseManagement.title')}</a></li>
+              <li><a href="/services">{t('services.airFreight.title')}</a></li>
             </ul>
           </div>
 
           <div className="footer-contact">
-            <h4>Contact Us</h4>
+            <h4>{t('common.contactUs')}</h4>
             <div className="contact-item">
               <strong>Head Office:</strong>
               <a href="https://maps.app.goo.gl/5CiCba5Z7xsvwGk66" target="_blank" rel="noopener noreferrer">Jl. Bambu Apus Raya No.3</a>

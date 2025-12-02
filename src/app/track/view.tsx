@@ -5,11 +5,18 @@ import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Package, MapPin, Calendar, Truck } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 // Dummy data generators
 const LOCATIONS = ['Jakarta', 'Surabaya', 'Bandung', 'Semarang', 'Medan', 'Makassar', 'Denpasar', 'Balikpapan'];
-const SERVICES = ['Express Service', 'Regular Service', 'Economy Service', 'Same Day Delivery'];
-const STATUSES = ['Delivered', 'Out for Delivery', 'In Transit', 'Processing'];
+const SERVICES = {
+  en: ['Express Service', 'Regular Service', 'Economy Service', 'Same Day Delivery'],
+  id: ['Layanan Express', 'Layanan Regular', 'Layanan Ekonomi', 'Pengiriman Hari Sama']
+};
+const STATUSES = {
+  en: ['Delivered', 'Out for Delivery', 'In Transit', 'Processing'],
+  id: ['Terkirim', 'Sedang Dikirim', 'Dalam Perjalanan', 'Diproses']
+};
 
 interface TimelineEvent {
   date: string;
@@ -30,40 +37,40 @@ interface ShipmentData {
   timeline: TimelineEvent[];
 }
 
-const generateDummyData = (trackingId: string): ShipmentData => {
+const generateDummyData = (trackingId: string, language: 'en' | 'id', t: (key: string) => string): ShipmentData => {
   const origin = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
   let destination = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
   while (destination === origin) {
     destination = LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
   }
 
-  const status = STATUSES[Math.floor(Math.random() * STATUSES.length)];
-  const service = SERVICES[Math.floor(Math.random() * SERVICES.length)];
+  const status = STATUSES[language][Math.floor(Math.random() * STATUSES[language].length)];
+  const service = SERVICES[language][Math.floor(Math.random() * SERVICES[language].length)];
   const weight = `${(Math.random() * 20 + 1).toFixed(1)} kg`;
 
   const now = new Date();
   const timeline: TimelineEvent[] = [];
 
   // Generate timeline based on status
-  if (status === 'Delivered') {
+  if (status === t('track.status.delivered') || status === 'Delivered') {
     timeline.push({
       date: now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
       time: now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-      status: 'Package Delivered',
+      status: t('track.status.delivered'),
       location: destination,
-      description: 'Your package has been successfully delivered'
+      description: t('track.events.packageDelivered')
     });
   }
 
-  if (['Delivered', 'Out for Delivery'].includes(status)) {
+  if ([t('track.status.delivered'), t('track.status.outForDelivery'), 'Delivered', 'Out for Delivery'].includes(status)) {
     const d1 = new Date(now);
     d1.setHours(d1.getHours() - 3);
     timeline.push({
       date: d1.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
       time: d1.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-      status: 'Out for Delivery',
+      status: t('track.status.outForDelivery'),
       location: destination,
-      description: 'Package is on the way to your address'
+      description: t('track.events.outForDelivery')
     });
   }
 
@@ -72,9 +79,9 @@ const generateDummyData = (trackingId: string): ShipmentData => {
   timeline.push({
     date: d2.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
     time: '18:45',
-    status: 'In Transit',
+    status: t('track.status.inTransit'),
     location: 'Jakarta Hub',
-    description: 'Package departed from sorting facility'
+    description: t('track.events.inTransit')
   });
 
   const d3 = new Date(now);
@@ -82,9 +89,9 @@ const generateDummyData = (trackingId: string): ShipmentData => {
   timeline.push({
     date: d3.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
     time: '09:30',
-    status: 'Package Picked Up',
+    status: t('track.status.pickedUp'),
     location: origin,
-    description: 'Package has been picked up from sender'
+    description: t('track.events.pickedUp')
   });
 
   const estimatedDelivery = new Date(now);
@@ -107,25 +114,24 @@ export default function TrackView() {
   const trackingId = searchParams.get('id') || '';
   const [shipmentData, setShipmentData] = useState<ShipmentData | null>(null);
   const [loading, setLoading] = useState(true);
+  const { t, language } = useLanguage();
 
   // Generate dummy data only on client after mount to avoid hydration mismatch
   useEffect(() => {
     const timer = setTimeout(() => {
       if (trackingId) {
-        setShipmentData(generateDummyData(trackingId));
+        setShipmentData(generateDummyData(trackingId, language, t));
       }
       setLoading(false);
     }, 0);
     return () => clearTimeout(timer);
-  }, [trackingId]);
+  }, [trackingId, language, t]);
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Delivered': return 'status-delivered';
-      case 'Out for Delivery': return 'status-out-delivery';
-      case 'In Transit': return 'status-transit';
-      default: return 'status-processing';
-    }
+    if (status === t('track.status.delivered') || status === 'Delivered') return 'status-delivered';
+    if (status === t('track.status.outForDelivery') || status === 'Out for Delivery') return 'status-out-delivery';
+    if (status === t('track.status.inTransit') || status === 'In Transit') return 'status-transit';
+    return 'status-processing';
   };
 
   return (
@@ -137,7 +143,7 @@ export default function TrackView() {
           {loading ? (
             <div className="loading-state">
               <div className="spinner"></div>
-              <p>Tracking your shipment...</p>
+              <p>{t('track.loading')}</p>
             </div>
           ) : shipmentData ? (
             <div className="track-content">
@@ -145,7 +151,7 @@ export default function TrackView() {
               <div className="track-header-card">
                 <div className="header-top">
                   <div className="tracking-id-section">
-                    <span className="label">Tracking ID</span>
+                    <span className="label">{t('track.trackingId')}</span>
                     <h1 className="tracking-id">{shipmentData.id}</h1>
                   </div>
                   <div className={`status-badge ${getStatusColor(shipmentData.status)}`}>
@@ -157,7 +163,7 @@ export default function TrackView() {
                   <div className="route-point">
                     <MapPin size={20} />
                     <div>
-                      <span className="route-label">Origin</span>
+                      <span className="route-label">{t('track.origin')}</span>
                       <p className="route-value">{shipmentData.origin}</p>
                     </div>
                   </div>
@@ -165,7 +171,7 @@ export default function TrackView() {
                   <div className="route-point">
                     <MapPin size={20} />
                     <div>
-                      <span className="route-label">Destination</span>
+                      <span className="route-label">{t('track.destination')}</span>
                       <p className="route-value">{shipmentData.destination}</p>
                     </div>
                   </div>
@@ -177,21 +183,21 @@ export default function TrackView() {
                 <div className="detail-card">
                   <div className="detail-icon"><Truck size={24} /></div>
                   <div>
-                    <span className="detail-label">Service Type</span>
+                    <span className="detail-label">{t('track.serviceType')}</span>
                     <p className="detail-value">{shipmentData.service}</p>
                   </div>
                 </div>
                 <div className="detail-card">
                   <div className="detail-icon"><Package size={24} /></div>
                   <div>
-                    <span className="detail-label">Weight</span>
+                    <span className="detail-label">{t('track.weight')}</span>
                     <p className="detail-value">{shipmentData.weight}</p>
                   </div>
                 </div>
                 <div className="detail-card">
                   <div className="detail-icon"><Calendar size={24} /></div>
                   <div>
-                    <span className="detail-label">Est. Delivery</span>
+                    <span className="detail-label">{t('track.estimatedDelivery')}</span>
                     <p className="detail-value">{shipmentData.estimatedDelivery}</p>
                   </div>
                 </div>
@@ -199,7 +205,7 @@ export default function TrackView() {
 
               {/* Timeline */}
               <div className="timeline-card">
-                <h2 className="timeline-title">Shipment Timeline</h2>
+                <h2 className="timeline-title">{t('track.timeline')}</h2>
                 <div className="timeline">
                   {shipmentData.timeline.map((event, index) => (
                     <div key={index} className="timeline-item">
@@ -225,8 +231,8 @@ export default function TrackView() {
           ) : (
             <div className="empty-state">
               <Package size={64} />
-              <h2>No tracking information found</h2>
-              <p>Please check your tracking ID and try again</p>
+              <h2>{t('track.notFound')}</h2>
+              <p>{t('track.notFound')}</p>
             </div>
           )}
         </div>

@@ -3,8 +3,11 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Phone, Mail, Globe, Truck, Plane, Ship } from 'lucide-react';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
+  
   return (
     <main className="main-content">
       <Header />
@@ -13,9 +16,9 @@ export default function Contact() {
       <section className="hero-section">
         <div className="container">
           <div className="hero-text">
-            <h1 className="hero-title">Contact us</h1>
+            <h1 className="hero-title">{t('contact.heroTitle')}</h1>
             <p className="hero-subtitle">
-              Get in touch and ask us anything. We are here to provide the best logistics solutions for your business needs.
+              {t('contact.heroSubtitle')}
             </p>
           </div>
 
@@ -24,26 +27,26 @@ export default function Contact() {
             <div className="form-wrapper">
               <form className="contact-form">
                 <div className="form-row">
-                  <input type="text" name="name" id="name" placeholder="Your name" className="form-input" />
-                  <input type="email" name="email" id="email" placeholder="Email address" className="form-input" />
+                  <input type="text" name="name" id="name" placeholder={t('contact.form.name')} className="form-input" />
+                  <input type="email" name="email" id="email" placeholder={t('contact.form.email')} className="form-input" />
                 </div>
                 <div className="form-row">
                    <div className="phone-input-wrapper">
-                      <input type="tel" name="phone" id="phone" placeholder="+62 812 3456 7890" className="form-input" />
+                      <input type="tel" name="phone" id="phone" placeholder={t('contact.form.phone')} className="form-input" />
                    </div>
                    <select name="interest" id="interest" className="form-input select-input">
-                      <option value="">Interested in</option>
-                      <option value="freight">Freight Forwarding</option>
-                      <option value="warehousing">Warehousing</option>
-                      <option value="customs">Customs Clearance</option>
+                      <option value="">{t('contact.form.interestedIn')}</option>
+                      <option value="freight">{t('contact.form.interestedOptions.freight')}</option>
+                      <option value="warehousing">{t('contact.form.interestedOptions.warehousing')}</option>
+                      <option value="customs">{t('contact.form.interestedOptions.customs')}</option>
                    </select>
                 </div>
-                <textarea name="message" id="message" rows={6} placeholder="How can we help?" className="form-input textarea-input"></textarea>
+                <textarea name="message" id="message" rows={6} placeholder={t('contact.form.message')} className="form-input textarea-input"></textarea>
                 
-                <button type="submit" className="submit-btn">Send your message</button>
+                <button type="submit" className="submit-btn">{t('contact.form.submit')}</button>
                 
                 <p className="disclaimer">
-                  By clicking, you agree to our Terms & Conditions, Privacy and Data Protection Policy.
+                  {t('contact.form.disclaimer')}
                 </p>
               </form>
             </div>
@@ -67,8 +70,8 @@ export default function Contact() {
       <section className="location-section">
         <div className="container">
           <div className="location-header">
-            <span className="location-label">JAKARTA, INDONESIA</span>
-            <h2 className="location-title">Get in touch with Visi Logistics</h2>
+            <span className="location-label">{t('contact.location.label')}</span>
+            <h2 className="location-title">{t('contact.location.title')}</h2>
           </div>
 
           <div className="location-content">
@@ -86,17 +89,17 @@ export default function Contact() {
 
              <div className="info-card">
                 <div className="info-group">
-                   <p className="info-label">Address</p>
+                   <p className="info-label">{t('contact.info.address')}</p>
                    <p className="info-value">Jl. Bambu Apus Raya No.3, RT.9/RW.3, Bambu Apus, Kec. Cipayung, Kota Jakarta Timur 13890</p>
                 </div>
                 
                 <div className="info-group">
-                   <p className="info-label">Email</p>
+                   <p className="info-label">{t('contact.info.email')}</p>
                    <p className="info-value">info@visilogistics.com</p>
                 </div>
 
                 <div className="info-group">
-                   <p className="info-label">Phone</p>
+                   <p className="info-label">{t('contact.info.phone')}</p>
                    <p className="info-value">+6221 8551 9677</p>
                 </div>
 

@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Services from '@/components/Services';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function ServicesPage() {
+  const { t } = useLanguage();
   return (
     <main>
       <Header />
@@ -23,8 +25,8 @@ export default function ServicesPage() {
           <div className="overlay"></div>
         </div>
         <div className="container header-content">
-          <h1 className="page-title">Our Services</h1>
-          <p className="page-subtitle">Comprehensive logistics solutions tailored to your needs.</p>
+          <h1 className="page-title">{t('services.title')}</h1>
+          <p className="page-subtitle">{t('services.subtitle')}</p>
         </div>
       </section>
 

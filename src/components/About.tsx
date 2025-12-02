@@ -1,33 +1,36 @@
 import Image from 'next/image';
+import { useLanguage } from '@/lib/LanguageContext';
 
 export default function About() {
+  const { t } = useLanguage();
+  
   return (
     <section className="section about" id="about">
       <div className="container">
         <div className="grid grid-2">
           <div className="about-content">
-            <h2 className="section-title" style={{ textAlign: 'left' }}>A Few Words About Us</h2>
+            <h2 className="section-title" style={{ textAlign: 'left' }}>{t('about.title')}</h2>
             <div className="about-text">
+              <p dangerouslySetInnerHTML={{ 
+                __html: t('about.paragraph1').replace('PT. Surya Mandiri Logistik', `<strong>${t('about.companyName')}</strong>`)
+              }} />
               <p>
-                Visi Logistics under the management of <strong>PT. Surya Mandiri Logistik</strong> is a company that has experience in the business of express shipping and logistics service, since 2011.
+                {t('about.paragraph2')}
               </p>
               <p>
-                With support made of land transportation whose operational activities are managed by Visi Logistics (single courier) and Principal Support for Domestic Flights as well as Pelni Shipping Principal Support and Private Services, we are able to show a high commitment in distributing goods in accordance with time and cost that is very effective and efficient.
-              </p>
-              <p>
-                In accordance with the management commitment of PT. Surya Mandiri Logistik in providing quality service to customers, Visi Logistics is managed by Professionals who have Experience and are Trained in the field of distribution and Logistics Services (Domestic & International).
+                {t('about.paragraph3')}
               </p>
             </div>
             
             <div className="download-section">
               <a href="#" className="btn-download" onClick={(e) => e.preventDefault()}>
-                Download Company Profile (PDF)
+                {t('about.downloadProfile')}
               </a>
             </div>
             
             <div className="mission-box glass">
-              <h4>Our Mission</h4>
-              <p>“Distribution & Logistics Services Company That Always Prioritizes Commitment“</p>
+              <h4>{t('about.mission')}</h4>
+              <p>{t('about.missionStatement')}</p>
             </div>
           </div>
           
