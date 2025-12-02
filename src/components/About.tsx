@@ -34,7 +34,7 @@ export default function About() {
           <div className="about-image-wrapper">
             <div className="about-image-container">
                <Image 
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="/about.webp"
                 alt="Logistics Operations" 
                 fill
                 style={{ objectFit: 'cover' }}
