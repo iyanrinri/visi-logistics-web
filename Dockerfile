@@ -7,12 +7,11 @@ WORKDIR /app
 # Install pnpm globally
 RUN npm i -g pnpm
 
-# Copy only the manifest files first for caching
+# Copy only the manifest file for caching
 COPY package.json ./
-COPY pnpm-lock.yaml ./
 
 # Install all dependencies (including dev) needed for the build
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # Copy the rest of the source code
 COPY . .
@@ -33,12 +32,11 @@ RUN npm i -g pnpm
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 
-# Copy package manifest and lockfile for installing prod deps only
+# Copy package manifest for installing prod deps only
 COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
 
 # Install only production dependencies
-RUN pnpm install --prod --frozen-lockfile
+RUN pnpm install --prod
 
 # Expose the default Next.js port
 EXPOSE 3000
