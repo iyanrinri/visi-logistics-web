@@ -1,6 +1,6 @@
 # Visi Logistics Web
 
-A modern, premium logistics website built with **Next.js** and **pnpm**.
+A modern logistics landing page rebuilt with **Vue 3**, **Vite**, and **Tailwind CSS**.
 
 ## Live Demo
 
@@ -13,10 +13,6 @@ http://visilogistics.bromn.biz.id/
 ## Prerequisites
 
 - **Node.js** (v20 or later) – recommended LTS version.
-- **pnpm** – fast package manager. Install globally if you don't have it:
-  ```bash
-  npm i -g pnpm
-  ```
 - **Docker** (optional) – for containerised deployment.
 
 ## Getting Started (Local Development)
@@ -28,31 +24,31 @@ http://visilogistics.bromn.biz.id/
    ```
 2. **Install dependencies**
    ```bash
-   pnpm install
+   npm install
    ```
 3. **Run the development server**
    ```bash
-   pnpm dev
+   npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Building for Production
 
 ```bash
-pnpm build
+npm run build
 ```
 
-The compiled output will be placed in the `.next` directory.
+The compiled output will be placed in the `dist` directory.
 
 ## Running the Production Build Locally
 
 ```bash
-pnpm start
+npm run start
 ```
 
-The app will listen on port **3000** by default.
+The preview server listens on port **3000** by default.
 
-## Docker Deployment (Using pnpm)
+## Docker Deployment
 
 A multi‑stage Dockerfile is included in the project root. To build and run the container:
 
@@ -68,15 +64,15 @@ The application will be accessible at `http://localhost:3000` inside the contain
 
 ## Additional Scripts
 
-- `pnpm lint` – run ESLint.
-- `pnpm dev` – start development server with hot‑reloading.
-- `pnpm build` – create an optimized production build.
-- `pnpm start` – start the production server.
+- `npm run lint` – run ESLint.
+- `npm run dev` – start development server with hot-reloading.
+- `npm run build` – create an optimized production build.
+- `npm run start` – preview the production build.
 
 ## Learn More
 
-- **Next.js Documentation** – https://nextjs.org/docs
-- **pnpm Documentation** – https://pnpm.io
+- **Vue Documentation** – https://vuejs.org
+- **Vite Documentation** – https://vite.dev
 - **Docker Documentation** – https://docs.docker.com/get-started/
 
 ---
