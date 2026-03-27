@@ -83,7 +83,7 @@
                 class="h-full min-h-[460px] w-full object-cover"
               />
               <div class="absolute bottom-6 left-6 rounded-2xl bg-white/95 px-5 py-4 shadow-xl">
-                <p class="text-4xl font-black text-slate-900">15+</p>
+                <p class="text-4xl font-black text-slate-900">{{ count }}+</p>
                 <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{{ dictionary.about.experience }}</p>
               </div>
             </div>
@@ -186,6 +186,7 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { ArrowRight, CheckCircle2, Truck, Plane, Anchor, Package2, Weight, Clock3, Headset, MapPin } from 'lucide-vue-next';
 import RevealOnScroll from '@/components/RevealOnScroll.vue';
 import { useLanguage } from '@/composables/useLanguage';
+import { useCounterAnimation } from '@/composables/useCounterAnimation';
 import MainLayout from '@/layouts/MainLayout.vue';
 
 const serviceIcons = [Truck, Plane, Anchor, Package2];
@@ -204,6 +205,7 @@ const clientLogos = [
 ];
 
 const { dictionary, language } = useLanguage();
+const { count } = useCounterAnimation(15, 2000);
 const activeSlide = ref(0);
 let intervalId: number | undefined;
 
