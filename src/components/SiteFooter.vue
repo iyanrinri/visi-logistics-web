@@ -1,23 +1,57 @@
 <template>
   <footer id="footer" class="mt-20 bg-[#04102a] pb-8 pt-14 text-white">
-    <div class="shell grid gap-10 md:grid-cols-2 xl:grid-cols-5">
+    <div class="shell grid gap-10 md:grid-cols-2 xl:grid-cols-6">
       <div class="xl:col-span-2">
         <img src="/logo.png" alt="Visi Logistics" class="h-10 w-auto brightness-0 invert" />
         <p class="mt-6 max-w-md text-sm leading-7 text-slate-300">
           {{ dictionary.footer.description }}
         </p>
         <div class="mt-6 flex items-center gap-3">
-          <div class="h-9 w-9 rounded-full border border-white/20" />
-          <div class="h-9 w-9 rounded-full border border-white/20" />
+          <a
+            href="https://www.instagram.com/visilogistics.official"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
+          >
+            <Instagram class="h-4.5 w-4.5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/visi-logistics-b329903a8/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
+          >
+            <Linkedin class="h-4.5 w-4.5" />
+          </a>
         </div>
       </div>
 
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">{{ dictionary.footer.headOffice }}</p>
+        <ul class="mt-4 space-y-3 text-sm text-slate-300">
+          <li class="flex items-start gap-2.5">
+            <MapPin class="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
+            <span>{{ officeLocation }}</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <Phone class="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
+            <span>{{ dictionary.topbar.phone }}</span>
+          </li>
+          <li class="flex items-start gap-2.5">
+            <Mail class="mt-0.5 h-4 w-4 shrink-0 text-sky-300" />
+            <span>{{ dictionary.topbar.email }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">Services</p>
         <ul class="mt-4 space-y-2 text-sm text-slate-300">
-          <li v-for="line in dictionary.footer.address" :key="line">{{ line }}</li>
-          <li class="pt-2">{{ dictionary.topbar.phone }}</li>
-          <li>{{ dictionary.topbar.email }}</li>
+          <li v-for="service in services" :key="service">
+            <RouterLink to="/services" class="transition hover:text-sky-300">{{ service }}</RouterLink>
+          </li>
         </ul>
       </div>
 
@@ -45,15 +79,25 @@
 
     <div class="shell mt-10 border-t border-white/10 pt-5 text-sm text-slate-400 sm:flex sm:items-center sm:justify-between">
       <p>{{ dictionary.footer.copyright }}</p>
-      <p class="mt-2 sm:mt-0">{{ dictionary.footer.privacy }}</p>
+      <div class="mt-2 flex items-center gap-4 sm:mt-0">
+        <a href="#" class="transition hover:text-sky-300">{{ dictionary.footer.privacy }}</a>
+        <a href="#" class="transition hover:text-sky-300">Terms Of Service</a>
+      </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+import { Instagram, Linkedin, Mail, MapPin, Phone } from 'lucide-vue-next';
+import { RouterLink } from 'vue-router';
 import { useLanguage } from '@/composables/useLanguage';
 
 const { dictionary } = useLanguage();
+
+const services = ['Air & Sea Freight', 'Land Transport', 'Dangerous Goods', 'Warehouse'] as const;
+
+const officeLocation = computed(() => dictionary.value.footer.address.join(', '));
 
 const gallery = [
   'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=420&q=80',

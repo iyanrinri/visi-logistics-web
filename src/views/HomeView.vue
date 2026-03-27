@@ -1,7 +1,7 @@
 <template>
   <MainLayout>
     <main id="home" class="pb-10">
-      <section class="relative min-h-[calc(100vh-106px)] overflow-hidden bg-[#050f25]">
+      <section id="hero" class="relative min-h-[calc(100vh-106px)] overflow-hidden bg-[#050f25]">
         <div
           v-for="(slide, index) in slides"
           :key="slide.title"
@@ -47,9 +47,9 @@
               <h2 class="mt-4 max-w-2xl text-3xl font-extrabold leading-tight text-slate-900 md:text-5xl">{{ dictionary.services.title }}</h2>
               <p class="mt-3 text-base text-slate-500">{{ dictionary.services.subtitle }}</p>
             </div>
-            <button class="shrink-0 rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-sky-400 hover:text-sky-500">
+            <RouterLink to="/services" class="shrink-0 rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-sky-400 hover:text-sky-500">
               {{ dictionary.services.cta }}
-            </button>
+            </RouterLink>
           </div>
         </RevealOnScroll>
 
@@ -64,10 +64,10 @@
               </div>
               <h3 class="text-base font-bold text-slate-900">{{ service.title }}</h3>
               <p class="mt-2 flex-1 text-sm leading-6 text-slate-500">{{ service.description }}</p>
-              <a href="#contact" class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-sky-500 transition hover:text-sky-400">
+              <RouterLink to="/services" class="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-sky-500 transition hover:text-sky-400">
                 {{ dictionary.services.learnMore }}
                 <ArrowRight class="h-3.5 w-3.5" />
-              </a>
+              </RouterLink>
             </article>
           </RevealOnScroll>
         </div>

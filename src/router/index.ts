@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
 import TrackView from '@/views/TrackView.vue';
+import AboutView from '@/views/AboutView.vue';
+import ServicesView from '@/views/ServicesView.vue';
+import ContactView from '@/views/ContactView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -14,6 +17,21 @@ const router = createRouter({
       path: '/track',
       name: 'track',
       component: TrackView,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutView,
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: ServicesView,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView,
     },
   ],
   scrollBehavior(to) {
