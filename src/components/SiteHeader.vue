@@ -92,7 +92,7 @@ const menu = computed(() => [
   { label: dictionary.value.navigation.services, to: { path: '/services' } },
   { label: dictionary.value.navigation.contact, to: { path: '/contact' } },
   { label: dictionary.value.navigation.careers, to: { path: '/', hash: '#footer' } },
-  { label: dictionary.value.navigation.news, to: { path: '/', hash: '#footer' } },
+  { label: dictionary.value.navigation.news, to: { path: '/news' } },
 ]);
 
 onMounted(() => {

@@ -4,6 +4,8 @@ import TrackView from '@/views/TrackView.vue';
 import AboutView from '@/views/AboutView.vue';
 import ServicesView from '@/views/ServicesView.vue';
 import ContactView from '@/views/ContactView.vue';
+import NewsView from '@/views/NewsView.vue';
+import NewsDetailView from '@/views/NewsDetailView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -32,6 +34,16 @@ const router = createRouter({
       path: '/contact',
       name: 'contact',
       component: ContactView,
+    },
+    {
+      path: '/news',
+      name: 'news',
+      component: NewsView,
+    },
+    {
+      path: '/news/:slug',
+      name: 'news-detail',
+      component: NewsDetailView,
     },
   ],
   scrollBehavior(to) {
