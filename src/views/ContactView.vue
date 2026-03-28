@@ -200,7 +200,7 @@
                   width="100%"
                   height="320"
                   style="border: 0"
-                  allowfullscreen=""
+                  allowfullscreen
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   class="grayscale transition-all duration-500 group-hover:grayscale-0"
@@ -225,7 +225,7 @@
                   width="100%"
                   height="320"
                   style="border: 0"
-                  allowfullscreen=""
+                  allowfullscreen
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   class="grayscale transition-all duration-500 group-hover:grayscale-0"

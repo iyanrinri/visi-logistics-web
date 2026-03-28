@@ -163,6 +163,7 @@ const { language } = useLanguage();
 
 interface Article {
   id: number;
+  slug: string;
   category: string;
   date: string;
   title: {
