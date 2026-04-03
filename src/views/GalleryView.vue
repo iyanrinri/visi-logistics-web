@@ -112,7 +112,7 @@ const { dictionary } = useLanguage();
 
 const gallery = [
   {
-    src: 'https://images.unsplash.com/photo-1586528116493-da5510c9dde6?auto=format&fit=crop&w=900&q=80',
+    src: 'https://images.unsplash.com/photo-1592085198739-ffcad7f36b54?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     alt: 'Warehouse interior',
     label: 'Warehouse Operations',
   },
@@ -177,14 +177,14 @@ const gallery = [
     label: 'Aerial Logistics',
   },
   {
-    src: 'https://images.unsplash.com/photo-1509092360941-4a7b8c82f6db?auto=format&fit=crop&w=600&q=80',
+    src: 'https://images.unsplash.com/photo-1605732563938-8f8d4e7ad651?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     alt: 'Industrial warehouse',
     label: 'Project Cargo',
   },
   {
-    src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?auto=format&fit=crop&w=900&q=80',
-    alt: 'Logistics network',
-    label: 'Supply Chain',
+    src: 'https://images.unsplash.com/photo-1670121180530-cfcba4438038?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Logistics ship at sea',
+    label: 'Ship Chain',
   },
 ];
 </script>
