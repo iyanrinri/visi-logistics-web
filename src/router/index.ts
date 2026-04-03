@@ -6,6 +6,7 @@ import ServicesView from '@/views/ServicesView.vue';
 import ContactView from '@/views/ContactView.vue';
 import NewsView from '@/views/NewsView.vue';
 import NewsDetailView from '@/views/NewsDetailView.vue';
+import GalleryView from '@/views/GalleryView.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: '/news/:slug',
       name: 'news-detail',
       component: NewsDetailView,
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: GalleryView,
     },
   ],
   scrollBehavior(to) {

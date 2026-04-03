@@ -65,14 +65,18 @@
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">{{ dictionary.footer.gallery }}</p>
         <div class="mt-4 grid grid-cols-2 gap-2">
-          <img
+          <div
             v-for="(image, index) in gallery"
             :key="image"
-            :src="image"
-            :alt="`Gallery ${index + 1}`"
-            class="h-20 w-full rounded-xl object-cover"
-            loading="lazy"
-          />
+            class="group overflow-hidden rounded-xl"
+          >
+            <img
+              :src="image"
+              :alt="`Gallery ${index + 1}`"
+              class="h-20 w-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
     </div>

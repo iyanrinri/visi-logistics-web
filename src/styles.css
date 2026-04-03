@@ -171,13 +171,26 @@ select {
   background: rgba(255, 255, 255, 0.86);
 }
 
-.client-scroll {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-.client-scroll::-webkit-scrollbar {
-  display: none;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.float-card {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+.marquee-inner {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover .marquee-inner {
+  animation-play-state: paused;
 }
 
 .reveal {

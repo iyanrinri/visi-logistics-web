@@ -15,6 +15,7 @@ export const content = {
       services: 'Layanan',
       contact: 'Hubungi Kami',
       careers: 'Karier',
+      gallery: 'Galeri',
       news: 'Berita',
       track: 'Lacak Paket',
     },
@@ -62,7 +63,7 @@ export const content = {
       ],
     },
     about: {
-      eyebrow: 'Tentang Kami',
+      eyebrow: 'Siapa Kami',
       title: 'Mitra Logistik Global Terdepan',
       description:
         'PT. Visi Logistik Indonesia adalah penyedia jasa logistik dan ekspedisi yang berdiri sejak 2011. Kami didukung manajemen transportasi darat mandiri dan jaringan pelayaran terkemuka.',
@@ -100,12 +101,66 @@ export const content = {
       ],
       cta: 'Diskusikan kebutuhan Anda',
     },
+    gallery: {
+      eyebrow: 'Galeri Kami',
+      title: 'Logistik dalam Aksi.',
+      subtitle: 'Kami menyediakan layanan logistik end-to-end, dari unit charter hingga penanganan kargo khusus, disesuaikan untuk efisiensi industri.',
+    },
     cta: {
       eyebrow: 'Siap Berkolaborasi?',
       title: 'Bangun Rantai Pasok yang Lebih Cepat dan Terkontrol',
       description: 'Konsultasikan kebutuhan pengiriman bisnis Anda bersama tim Visi Logistics dan dapatkan solusi yang relevan untuk operasional harian maupun proyek khusus.',
       primary: 'Minta Penawaran Bisnis',
       secondary: 'Hubungi Tim Kami',
+    },
+    workflow: {
+      eyebrow: 'Alur Kerja Kami',
+      title: 'Operasional Logistik yang Terstruktur',
+      subtitle: 'Proses yang efisien dan transparan dari awal hingga akhir.',
+      items: [
+        {
+          title: 'Konsultasi',
+          description: 'Kami menganalisis kebutuhan pengiriman, volume, dan tujuan Anda untuk menentukan rute logistik terbaik.',
+        },
+        {
+          title: 'Sortir & Perencanaan',
+          description: 'Kargo disortir, dikemas, dan rencana pengiriman strategis dieksekusi untuk efisiensi maksimal.',
+        },
+        {
+          title: 'Transportasi',
+          description: 'Barang dikirim melalui armada darat, udara, atau laut kami yang aman dengan pemantauan real-time.',
+        },
+        {
+          title: 'Pengiriman',
+          description: 'Pengiriman tiba dengan selamat di tujuan beserta bukti pengiriman dan laporan akhir.',
+        },
+      ],
+    },
+    faq: {
+      eyebrow: 'Pertanyaan Umum',
+      title: 'Pertanyaan yang Sering Diajukan',
+      items: [
+        {
+          question: 'Bagaimana cara melacak pengiriman saya?',
+          answer: 'Anda dapat memantau status pengiriman secara real-time melalui tombol "Lacak Paket" di navbar website kami. Cukup masukkan nomor Airway Bill (AWB) atau Nomor Booking untuk melihat posisi terkini, riwayat pergerakan kargo, dan estimasi waktu tiba.',
+        },
+        {
+          question: 'Apakah Anda menangani Barang Berbahaya (B3)?',
+          answer: 'Ya. Tim kami telah bersertifikat dan terlatih untuk menangani Barang Berbahaya (B3), termasuk bahan kimia industri, gas bertekanan, produk farmasi, vaksin, dan elektronik sensitif — semuanya diproses sesuai regulasi IATA, IMDG, dan peraturan nasional yang berlaku.',
+        },
+        {
+          question: 'Dokumen apa yang diperlukan untuk pengiriman internasional?',
+          answer: 'Dokumen standar yang umumnya dibutuhkan meliputi Invoice Komersial, Packing List, Bill of Lading (B/L) atau Airway Bill (AWB), Certificate of Origin, serta dokumen kepabeanan sesuai negara tujuan. Tim operasional kami siap mendampingi proses kelengkapan dokumen agar pengiriman berjalan lancar.',
+        },
+        {
+          question: 'Apakah tersedia asuransi pengiriman?',
+          answer: 'Ya, kami menyediakan asuransi kargo komprehensif yang disesuaikan dengan jenis dan nilai barang Anda. Perlindungan mencakup risiko kehilangan, kerusakan, maupun pencurian selama proses pengiriman dari pickup hingga serah terima akhir. Hubungi tim kami untuk mendapatkan penawaran premi.',
+        },
+        {
+          question: 'Berapa lama estimasi pengiriman domestik?',
+          answer: 'Estimasi pengiriman bergantung pada kota tujuan dan layanan yang dipilih. Same Day Delivery tersedia untuk rute tertentu di Jakarta, sedangkan pengiriman antar kota dan antar pulau umumnya membutuhkan 1–5 hari kerja. Untuk kargo proyek atau wilayah terpencil, tim kami akan menyusun jadwal pengiriman khusus.',
+        },
+      ],
     },
     footer: {
       description: 'Solusi logistik terpadu dengan fokus pada kecepatan, keamanan, dan efisiensi pengiriman ke seluruh Nusantara.',
@@ -170,6 +225,7 @@ export const content = {
       services: 'Services',
       contact: 'Contact Us',
       careers: 'Career',
+      gallery: 'Gallery',
       news: 'News',
       track: 'Track Package',
     },
@@ -217,7 +273,7 @@ export const content = {
       ],
     },
     about: {
-      eyebrow: 'About Us',
+      eyebrow: 'Who We Are',
       title: 'A Leading Global Logistics Partner',
       description:
         'PT. Visi Logistik Indonesia has delivered logistics and freight services since 2011, supported by independent land transport management and a strong domestic shipping network.',
@@ -255,12 +311,66 @@ export const content = {
       ],
       cta: 'Discuss your requirements',
     },
+    gallery: {
+      eyebrow: 'Our Gallery',
+      title: 'Logistics in Action.',
+      subtitle: 'We provide end-to-end logistics services, from charter units to specialized cargo handling, tailored for industrial efficiency.',
+    },
     cta: {
       eyebrow: 'Ready to Collaborate?',
       title: 'Build a Faster and More Controlled Supply Chain',
       description: 'Discuss your shipping needs with the Visi Logistics team and get solutions tailored for daily operations and special projects.',
       primary: 'Request Business Quote',
       secondary: 'Talk to Our Team',
+    },
+    workflow: {
+      eyebrow: 'Our Workflow',
+      title: 'Seamless Logistics Operation',
+      subtitle: 'Efficient and transparent process from start to finish.',
+      items: [
+        {
+          title: 'Consultation',
+          description: 'We analyze your shipment needs, volume, and destination to determine the best logistics route.',
+        },
+        {
+          title: 'Sorting & Planning',
+          description: 'Cargo is sorted, packed, and a strategic delivery plan is executed for maximum efficiency.',
+        },
+        {
+          title: 'Transportation',
+          description: 'Goods are dispatched via our secure land, air, or sea fleets with real-time tracking.',
+        },
+        {
+          title: 'Delivery',
+          description: 'Shipment arrives safely at the destination with proof of delivery and final reporting.',
+        },
+      ],
+    },
+    faq: {
+      eyebrow: 'Common Questions',
+      title: 'Frequently Asked Questions',
+      items: [
+        {
+          question: 'How can I track my shipment?',
+          answer: 'You can track your shipment in real-time by using our "Track Shipment" button in the navigation bar. Simply enter your Airway Bill (AWB) or Booking Number to see the latest status, current location, and estimated delivery time.',
+        },
+        {
+          question: 'Do you handle Dangerous Goods (DG)?',
+          answer: 'Yes. Our certified team is fully equipped to handle Dangerous Goods (DG) including hazardous chemicals, industrial gases, pharmaceuticals, vaccines, and fragile electronics — all managed in strict compliance with IATA, IMDG, and local regulatory standards.',
+        },
+        {
+          question: 'What documents are required for international shipping?',
+          answer: 'Standard documents typically include a Commercial Invoice, Packing List, Bill of Lading (B/L) or Airway Bill (AWB), Certificate of Origin, and destination-specific customs declarations. Our operations team will guide you through the full documentation process to ensure smooth clearance.',
+        },
+        {
+          question: 'Do you offer shipping insurance?',
+          answer: 'Yes, we provide comprehensive cargo insurance options tailored to the type and value of your goods. Coverage protects against loss, damage, or theft throughout the shipment journey — from pickup to final delivery. Contact our team to get a coverage quote.',
+        },
+        {
+          question: 'How long does domestic delivery take?',
+          answer: 'Delivery timelines depend on the destination city and selected service tier. Same Day Delivery is available for select routes in Jakarta, while inter-city and cross-island shipments typically take 1–5 business days. For project cargo or remote areas, our team will provide a custom schedule.',
+        },
+      ],
     },
     footer: {
       description: 'Integrated logistics solutions focused on speed, security, and delivery efficiency across the archipelago.',

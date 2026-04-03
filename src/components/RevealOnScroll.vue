@@ -35,7 +35,8 @@ onMounted(() => {
     ([entry]) => {
       if (entry?.isIntersecting) {
         isVisible.value = true;
-        observer?.disconnect();
+      } else {
+        isVisible.value = false;
       }
     },
     {

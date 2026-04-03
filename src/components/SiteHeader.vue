@@ -21,9 +21,9 @@
           v-for="item in menu"
           :key="item.label"
           :to="item.to"
-          class="text-sm font-semibold tracking-wide text-slate-600 transition hover:text-sky-500"
-          active-class="text-sky-500"
-          exact-active-class="text-sky-500"
+          class="relative text-sm font-semibold tracking-wide text-slate-600 transition hover:text-sky-500 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-sky-500 after:transition-all after:duration-300 hover:after:w-full"
+          :active-class="item.noActive ? '' : 'text-sky-500 after:!w-full'"
+          :exact-active-class="item.noActive ? '' : 'text-sky-500 after:!w-full'"
         >
           {{ item.label }}
         </RouterLink>
@@ -33,7 +33,9 @@
         <LanguageSwitch />
         <RouterLink
           to="/track"
-          class="inline-flex items-center gap-1.5 rounded-xl bg-sky-500 px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_20px_rgba(22,152,244,0.25)] transition hover:bg-sky-400"
+          active-class=""
+          exact-active-class=""
+          class="inline-flex items-center gap-1.5 rounded-xl bg-sky-500 px-3 py-2 text-xs font-semibold !text-white shadow-[0_8px_20px_rgba(22,152,244,0.25)] transition hover:bg-sky-400"
         >
           <Package class="h-3.5 w-3.5" />
           {{ dictionary.navigation.track }}
@@ -91,7 +93,8 @@ const menu = computed(() => [
   { label: dictionary.value.navigation.about, to: { path: '/about' } },
   { label: dictionary.value.navigation.services, to: { path: '/services' } },
   { label: dictionary.value.navigation.contact, to: { path: '/contact' } },
-  { label: dictionary.value.navigation.careers, to: { path: '/', hash: '#footer' } },
+  { label: dictionary.value.navigation.careers, to: { path: '/', hash: '#footer' }, noActive: true },
+  { label: dictionary.value.navigation.gallery, to: { path: '/gallery' } },
   { label: dictionary.value.navigation.news, to: { path: '/news' } },
 ]);
 
