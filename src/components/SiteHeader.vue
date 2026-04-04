@@ -22,8 +22,8 @@
           :key="item.label"
           :to="item.to"
           class="relative text-sm font-semibold tracking-wide text-slate-600 transition hover:text-sky-500 after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-sky-500 after:transition-all after:duration-300 hover:after:w-full"
-          :active-class="item.noActive ? '' : 'text-sky-500 after:!w-full'"
-          :exact-active-class="item.noActive ? '' : 'text-sky-500 after:!w-full'"
+          active-class="text-sky-500 after:!w-full"
+          exact-active-class="text-sky-500 after:!w-full"
         >
           {{ item.label }}
         </RouterLink>
@@ -91,8 +91,8 @@
           :key="item.label"
           :to="item.to"
           class="group flex items-center justify-between py-4 text-lg font-semibold text-slate-700 transition"
-          :active-class="item.noActive ? '' : 'text-sky-500 !bg-sky-50 -mx-4 px-4 rounded-xl'"
-          :exact-active-class="item.noActive ? '' : 'text-sky-500 !bg-sky-50 -mx-4 px-4 rounded-xl'"
+          active-class="text-sky-500 !bg-sky-50 -mx-4 px-4 rounded-xl"
+          exact-active-class="text-sky-500 !bg-sky-50 -mx-4 px-4 rounded-xl"
           @click="mobileMenuOpen = false"
         >
           <span>{{ item.label }}</span>
