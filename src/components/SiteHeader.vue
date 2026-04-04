@@ -174,7 +174,7 @@ const menu = computed(() => [
   { label: dictionary.value.navigation.about, to: { path: '/about' } },
   { label: dictionary.value.navigation.services, to: { path: '/services' } },
   { label: dictionary.value.navigation.contact, to: { path: '/contact' } },
-  { label: dictionary.value.navigation.careers, to: { path: '/', hash: '#footer' }, noActive: true },
+  { label: dictionary.value.navigation.careers, to: { path: '/careers' } },
   { label: dictionary.value.navigation.gallery, to: { path: '/gallery' } },
   { label: dictionary.value.navigation.news, to: { path: '/news' } },
 ]);

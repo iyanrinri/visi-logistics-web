@@ -58,7 +58,9 @@
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-200">{{ dictionary.footer.company }}</p>
         <ul class="mt-4 space-y-2 text-sm text-slate-300">
-          <li v-for="link in dictionary.footer.companyLinks" :key="link">{{ link }}</li>
+          <li v-for="(link, index) in dictionary.footer.companyLinks" :key="link">
+            <RouterLink :to="companyRoutes[index]" class="transition hover:text-sky-300">{{ link }}</RouterLink>
+          </li>
         </ul>
       </div>
 
@@ -84,8 +86,8 @@
     <div class="shell mt-10 border-t border-white/10 pt-5 text-sm text-slate-400 sm:flex sm:items-center sm:justify-between">
       <p>{{ dictionary.footer.copyright }}</p>
       <div class="mt-2 flex items-center gap-4 sm:mt-0">
-        <a href="#" class="transition hover:text-sky-300">{{ dictionary.footer.privacy }}</a>
-        <a href="#" class="transition hover:text-sky-300">Terms Of Service</a>
+        <RouterLink to="/privacy" class="transition hover:text-sky-300">{{ dictionary.footer.privacy }}</RouterLink>
+        <RouterLink to="/terms" class="transition hover:text-sky-300">Terms Of Service</RouterLink>
       </div>
     </div>
   </footer>
@@ -100,6 +102,8 @@ import { useLanguage } from '@/composables/useLanguage';
 const { dictionary } = useLanguage();
 
 const services = ['Air & Sea Freight', 'Land Transport', 'Dangerous Goods', 'Warehouse'] as const;
+
+const companyRoutes = ['/about', '/contact', '/careers', '/news'] as const;
 
 const officeLocation = computed(() => dictionary.value.footer.address.join(', '));
 
